@@ -80,6 +80,8 @@ Submit patches or \texttt{git pull} requests to the developer mailing
 list (\texttt{xcsoar-devel@lists.sourceforge.net}) or at
 \href{https://github.com/XCSoar/XCSoar}{our GitHub repository}.
 
+Do not include file attachments in messages sent to the developer mailing list. Attachments are automatically deleted.
+
 A patch should be self-explanatory, it needs a good description.  The
 subject line specifies the subsystem/library name and a brief
 description of what is changed, followed by an empty line.  Then write
@@ -225,7 +227,7 @@ The goal is to recognize GUI text fast and reliable.
 
 \begin{description}
   \item[Captions] Captions (button captions, windows titles) to use
-        capitalization. E.g. ,"Pan On", "The Display Of ...". 
+        capitalization. E.g., "Pan On", "The Display Of ...". 
 
   \item[Abbreviations] Generally known abbreviation use upper case like "MC", "ETA",
         "V"; or they can use CamelCase, especially when using synthetic
@@ -233,8 +235,7 @@ The goal is to recognize GUI text fast and reliable.
         Abbreviated words by simply cutting the end of the word needs a
         dot, e.g. "Max. temp."
 
-  \item[Plain text] Longer help texts are to write like prose: "This is the help
-        page for ...".
+  \item[Plain text] Longer help text is to be written like prose: "This is the help page for ...".
 
   \item[Labels] Label text has the least systematic constraints:
 \begin{itemize}
@@ -254,9 +255,7 @@ The goal is to recognize GUI text fast and reliable.
         example would be MACCREADY, which should be MacCready, or just
         MC.
 
-  \item[Units] Units have their own specific appearance. A profound paper is
-        http://physics.nist.gov/cuu/pdf/checklist.pdf we could just
-        refer to.
+  \item[Units] Units have their own specific appearance. A profound paper is \href{http://physics.nist.gov/cuu/pdf/checklist.pdf}{http://physics.nist.gov/cuu/pdf/checklist.pdf} we could just refer to.
 \end{description}
 
 
@@ -282,8 +281,7 @@ section tries to give a rough overview where you can find what.
 \item \texttt{Formatter/}: code that formats internal values to
   strings
 
-\item \texttt{Units/}: conversion from SI units (``System'' units) to
-  configured user units
+\item \texttt{Units/}: conversion from SI (International System of Units, commonly known as the metric system) units to user-configured units
 
 \item \texttt{NMEA/}: data structures for values parsed from NMEA
 
@@ -314,7 +312,7 @@ section tries to give a rough overview where you can find what.
   long-running operations
 
 \item \texttt{Android/}: code specific to Android (the native part
-  only; Java code is in \texttt{android/src/}
+  only; Java code is in \texttt{android/src/})
 
 \item \texttt{Engine/PathSolvers/}: an implementation of Dijkstra's
   path finding algorithm, for task and contest optimisation
@@ -341,7 +339,7 @@ section tries to give a rough overview where you can find what.
 XCSoar runs on multiple threads, to make the UI responsive but still
 allow expensive background calculations.
 
-This is how it looks like on Windows and Linux/SDL (software
+This is how it looks on Windows and Linux/SDL (software
 rendering):
 
 \begin{tikzpicture}
@@ -383,7 +381,7 @@ house keeping twice per second (\texttt{Pro\-cess\-Ti\-mer.cpp}).
 
 The calculation thread (\texttt{Calcu\-la\-tion\-Thread.cpp},
 \texttt{Glide\-Com\-pu\-ter*.cpp}) does all the expensive calculations
-in background.  It gets data from the devices (through
+in the background.  It gets data from the devices (through
 \texttt{Merge\-Thread}) and forwards it together with calculation
 results to the drawing thread and the main thread.
 
@@ -412,7 +410,7 @@ and \texttt{OutputThread.java}, managed by
 \subsection{Locking}
 
 Some data structures are rarely modified.  There is no lock for them.
-For a modifications, all threads must be suspended.  Example:
+For a modification, all threads must be suspended.  Example:
 waypoints, airspaces.
 
 Other data structures are modified so often that correct locking would
@@ -607,11 +605,10 @@ $5 = GeoVector(267.899420345 107957.109724)
 \item Minimise the number of colours, and re-use colour groups already defined.
 \item Too much use of colour where it is not required serves only to reduce 
  the effectiveness of bright colours for important items.
-\item High colour saturation elements should be reserved for high importance items
-\item High contrast against background should be reserved for high importance items
-\item Attempt to adopt colours that are intuitive based the function of the item
-\item Minimise the clutter where possible --- readibility is essential for use 
- in flight
+\item High colour saturation elements should be reserved for high importance items.
+\item High contrast against background should be reserved for high importance items.
+\item Attempt to adopt colours that are intuitive based the function of the item.
+\item Minimise clutter where possible --- readibility is essential for use in flight.
 \item Use colours defined in \verb|Graphics| according to functional name, not 
  their actual colour.
 \item Try to maintain consistent use of colours in all uses of that function, 
@@ -681,21 +678,20 @@ Navigation buttons are the Close, OK, Cancel and Select buttons.
 \begin{itemize}
 \item Dialogs that modify and save data when the dialogue closes.
 
-These shall usually have a Close button (no Cancel) and may have context specific 
-function buttons
+These shall usually have a Close button (no Cancel) and may have context specific function buttons.
 \item Dialogs that modify data where Cancel would be important for the user.
 
 These shall have OK and Cancel buttons.  This may include dialogs with 
 children dialogs where hitting Cancel from the parent dialogue cancels 
-all the changes made in the children dialogs
+all the changes made in the children dialogs.
 
 \item Dialogs that have a list of values, one of which can be selected to 
  return to the parent dialogue.
 
-These shall have Select and Cancel buttons
+These shall have Select and Cancel buttons.
 \item Dialogs that display information that cannot be modified.
 
-These shall have a Close button
+These shall have a Close button.
 \end{itemize}
 
 \subsection{dialogue button placement and size}
@@ -711,10 +707,9 @@ For landscape: lower left
 For portrait: Select in lower left, Cancel in lower right
 
 For landscape: Cancel in lower left, Select immediately above it
-\item Buttons will be 35 (scaled) pixels high
-\item Buttons will be flush with the bottom of the screen and with the sides of 
- the screen and against each other (no margins)
-\item In portrait, buttons will be 33% or 50% or 100% width of the screen
+\item Buttons will be 35 (scaled) pixels high.
+\item Buttons will be flush with the bottom of the screen and with the sides of the screen and against each other (no margins).
+\item In portrait, buttons will be 33\%, 50\%, or 100\% of the screen width.
 \item In landscape, buttons will be 65 to 80 (scaled) pixels wide, as wide as the 
  frame permits.  They will generally be a vertical row of buttons flush left of the screen
 \item If text won't fit on a button, the buttons can be made larger consistently 
